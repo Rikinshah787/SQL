@@ -7,7 +7,6 @@ My learning of Mysql and brush-up the skills from basic to advance
 -- Creation of DATABASE, TABLE, MAPPING ALL KEYS PROPERLY. 
 
 #Day 2 of Learning Conclusion --
---- 
 Explanation: 
 This query joins the Student, StudentGrade, and Course tables to retrieve information about students who are enrolled in a specific course in this case “Advance DBMS” and have grade less than or equals to grade - 3.0. I have used here inner join which means it will return only the rows where there is a match in both tables being joined and Using Order By for Grades will give us the Desc to ASC order. Hence, it selects the student's ID, first name, last name, the course ID, course description, and their grade in the course.
 For whom: 
