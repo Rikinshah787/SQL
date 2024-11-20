@@ -19,6 +19,8 @@ For whom: This query is important for course administrators and schedulers who n
 These SQL queries provide valuable insights into student performance, course enrollment, and faculty involvement, making them essential tools for different stakeholders within an educational institution.
 
 
-
+#Day 3 
+Scripting -- 
+I am using one variable to store the count of all of the invoices in the Invoices table that have a balance due and another variable to store the sum of the balances due for all of those invoices.  If that total balance due is greater than or equal to $30,000, the script should display a result set that displays the values of both variables like this
 
 
