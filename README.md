@@ -21,6 +21,9 @@ These SQL queries provide valuable insights into student performance, course enr
 
 #Day 3 
 Scripting -- 
-I am using one variable to store the count of all of the invoices in the Invoices table that have a balance due and another variable to store the sum of the balances due for all of those invoices.  If that total balance due is greater than or equal to $30,000, the script should display a result set that displays the values of both variables like this
+1 -- I am using one variable to store the count of all of the invoices in the Invoices table that have a balance due and another variable to store the sum of the balances due for all of those invoices.  If that total balance due is greater than or equal to $30,000, the script should display a result set that displays the values of both variables. 
+2 -- I am declarring and sets a variable that's equal to the total outstanding balance due. If the balance due is greater than $10,000.00, the script should return a result set consisting of VendorName, Invoice Number, InvoiceDueDate, and Balance for each invoice with a balance due, sorted with the oldest due date first. If the total outstanding balance due is less than $10,000.00, the script should return the message "Balance due is less than $10,000.00
+3 -- Using the the following script uses a derived table to return the date and invoice total of the earliest invoice issued by each vendor. Write a script that generates the same result set but uses a temporary table in place of the derived table. Make sure your script drops the temporary table if it already exists. That way, you can run the script twice without getting an error.” 
+
 
 
