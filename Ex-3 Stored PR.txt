@@ -1,0 +1,103 @@
+
+--------------------------------------------------- Script  Start for Creation of Procedure------------------------------------------
+
+ ---- Creating Procedure ------- 
+ ---Must starts from here --------
+
+CREATE PROCEDURE spBalanceRange
+    @VendorVar VARCHAR(50) = NULL,
+    @BalanceMin MONEY = NULL,
+    @BalanceMax MONEY = NULL
+AS
+BEGIN
+    -- Set default values
+    IF @BalanceMin IS NULL SET @BalanceMin = 0;
+    IF @BalanceMax IS NULL OR @BalanceMax = 0 SET @BalanceMax = 9999999;
+
+    -- Select statement with corrected filtering
+    SELECT 
+        V.VendorName, 
+        I.InvoiceNumber, 
+        (I.InvoiceTotal - I.PaymentTotal - I.CreditTotal) AS Balance
+    FROM 
+        Invoices AS I
+    INNER JOIN 
+        Vendors AS V ON I.VendorID = V.VendorID
+    WHERE 
+        (I.InvoiceTotal - I.PaymentTotal - I.CreditTotal) > 0  -- Only invoices with balance due
+        AND V.VendorName LIKE ISNULL(@VendorVar, '%')  -- Vendor name filtering
+        AND (I.InvoiceTotal - I.PaymentTotal - I.CreditTotal) BETWEEN @BalanceMin AND @BalanceMax  -- Balance range
+    ORDER BY 
+        Balance DESC;  -- Sort by balance due in descending order
+END;
+
+-------------------------------------- Executing the created procedure ----------------------------------------------- 
+
+EXEC spBalanceRange
+
+------------------------------  Ex 2 - 1a --- Passed by position with @VendorVar='M%' and no balance range------------------------------------
+
+
+EXEC spBalanceRange @VendorVar = 'M%';
+
+------------------------------- Ex 2 - 1b --- EXEC spBalanceRange @BalanceMin = 200, @BalanceMax = 1000” --------------------------------
+
+
+EXEC spBalanceRange @BalanceMin = 200, @BalanceMax = 1000
+
+
+------------------------------- Ex 2 - 1c ---- passed by position vendor less than $200 filtering  names begin with C or F --------------
+
+EXEC spBalanceRangetest @VendorVar = 'C%', @BalanceMin = 0, @BalanceMax = 200;
+EXEC spBalanceRangetest @VendorVar = 'F%', @BalanceMin = 0, @BalanceMax = 200;
+
+--------------------------------------------------- Ex 3 Creating a procedure ----------------------------------------------------------
+
+CREATE PROCEDURE spDateRange
+    @DateMin VARCHAR(10) = NULL,
+    @DateMax VARCHAR(10) = NULL
+AS
+BEGIN
+    -- Checking if both parameters are NULL or empty strings---------
+    IF (@DateMin IS NULL OR @DateMin = '') AND (@DateMax IS NULL OR @DateMax = '')
+    BEGIN
+        THROW 50000, 'Both date parameters cannot be NULL or empty strings.', 1;
+        RETURN;
+    END
+
+    -----Check if the date parameters are valid dates and @DateMin is earlier than @DateMax------
+    IF ISDATE(@DateMin) = 0 OR ISDATE(@DateMax) = 0 OR CONVERT(DATE, @DateMin) > CONVERT(DATE, @DateMax)
+    BEGIN
+        THROW 50000, 'Invalid date parameters or @DateMin is later than @DateMax.', 1;
+        RETURN; 
+    END
+
+    ---------Parameters are valid, return the result set---------
+
+    SELECT I.InvoiceNumber, I.InvoiceDate, I.InvoiceTotal,
+           (I.InvoiceTotal - I.PaymentTotal + I.CreditTotal) AS Balance
+    FROM Invoices AS I
+    WHERE CONVERT(DATE, I.InvoiceDate) BETWEEN CONVERT(DATE, @DateMin) AND CONVERT(DATE, @DateMax)
+    ORDER BY I.InvoiceDate;
+END
+
+
+----------------------------- Testing without any parameters  ---------------------------------------------
+EXEC spDateRange
+
+------------------------------- Testing with any parameters if Invalid date parameters or @DateMin is later than @DateMax.---
+
+EXEC spDateRange '10-10-24', '10-10-23';
+
+
+--------------------------------------------------- Ex 4 - 3a Running with correct parameters-------------------------------------------------------
+
+BEGIN TRY
+    EXEC spDateRange '2022-10-10', '2022-10-20';
+END TRY
+BEGIN CATCH
+    PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS NVARCHAR);
+    PRINT 'Error Description: ' + ERROR_MESSAGE();
+END CATCH;
+
+-------------------------------------------------- End of Script -------------------------------------------------------
