@@ -28,3 +28,8 @@ Scripting --
 3 -- Using the the following script uses a derived table to return the date and invoice total of the earliest invoice issued by each vendor. Write a script that generates the same result set but uses a temporary table in place of the derived table. Script drops the temporary table if it already exists.
 
 
+#Day 4 - 
+Created several user defined fuction's 
+1. Function named fnUnpaid InvoiceID that returns the InvoiceID of the earliest invoice with an unpaid balance.
+2. function named fnDateRange, similar to the stored procedure of exercise 3 which is created here the function should require two parameters of the date type. without validating   parameters. Returning a result set that includes the InvoiceNumber, InvoiceDate, InvoiceTotal, and Balance for each invoice for which the InvoiceDate is within the date range. Invoke the function from within a SELECT statement to return those invoices with InvoiceDate between October 10 and October 20, 2022.
+
