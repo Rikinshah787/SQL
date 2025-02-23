@@ -85,6 +85,8 @@ wlan.fc.type_subtype == 0x01 && wlan_mgt.fixed.status_code == 0x0000
 
 tshark -r wlan.pcap -Y '((wlan.fc.type_subtype == 0x20) && (wlan.fc.protected == 1)) && (wlan.bssid == 00:23:69:00:d0)' | wc -l
 
+tshark -r wlan.pcap -Y '((wlan.fc.type_subtype == 0x20) && (wlan.fc.protected == 1) && (wlan.bssid == 00:23:69:61:00:d0))' -T fields -e wlan.da | sort | uniq -c | sort -nr
+
 
 
 
