@@ -59,6 +59,7 @@ tcpdump -nne -r wlan.pcap 'wlan[0] == 0x10 and wlan[26:2] == 0x0000' | awk '{pri
 //
 
 wlan.fc.type_subtype == 0x08
+wlan.fc.type_subtype == 0x20
 
 
 tshark -r wlan.pcap -Y '((wlan.fc.type_subtype == 0x20) && (wlan.fc.protected == 1)) && (wlan.bssid == 00:23:69:00:d0)' | wc -l
