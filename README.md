@@ -45,5 +45,10 @@ wlan.fc.type_subtype == 0x20
 
 tcpdump -nne -r wlan.pcap 'wlan[0] == 0x08' | wc -l
 
+tcpdump -nne -r wlan.pcap 'wlan[0] == 0x08 and wlan[1] & 0x40 == 0x40' | wc -l
+
+
+
+
 
 
