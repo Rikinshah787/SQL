@@ -71,6 +71,10 @@ tshark -r wlan.pcap -Y '((wlan.fc.type_subtype == 0x20) && (wlan.fc.protected ==
 
 tshark -r wlan.pcap -Y '((wlan.fc.type_subtype == 0x20) && (wlan.fc.protected == 1) && (wlan.bssid == xx:xx:xx:xx:xx:xx))' -T fields -e wlan.da | sort | uniq -c | sort -nr
 
+//
+
+tcpdump   -nne   -r   wlan . pcap   ‘wlan [0]   =   0x08   and   wlan [1]   &   0x40   =   0x40’ | wc   -l
+
 
 
 
