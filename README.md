@@ -41,3 +41,4 @@ tshark -nn -r wlan.pcap -Y '((wlan.fc.type_subtype == 0x08 || wlan.fc.type_subty
 ((wlan.fc.type_subtype == 0x08 || wlan.fc.type_subtype == 0x05) && (wlan_mgt.fixed.capabilities.ess == 1) && (wlan_mgt.fixed.capabilities.ibss == 0))
 
 
+
