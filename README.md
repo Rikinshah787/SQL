@@ -94,7 +94,10 @@ For 12
 capinfos wlan.pcap
 
 
+//
 
+$ tcpdump -nnr wlan.pcap | head -1
+$ tcpdump -nnr wlan.pcap | tail -1
 
 
 
