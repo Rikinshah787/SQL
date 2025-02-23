@@ -128,6 +128,10 @@ tshark -r wlan.pcap -Y '(wlan.fc.type == 2) && (wlan.bssid == 00:23:69:61:00:d0)
 
 tshark -r wlan.pcap -Y '(wlan.bssid == 00:23:69:61:00:d0) && (wlan.sa == 1c:4b:d6:69:cd:07) && (wlan.fc.type_subtype == 0x00)' -T fields -e frame.time | tail -1
 
+//
+
+tshark  -r  wlan . pcap  -Y  '( wlan. bssid  ==  00:23:69:61:00: d0 )  &&  ( wlan .sa == 1c:4 b: d6 :69: cd :07) && ( wlan .fc. type_subtype == 0x00) ' -T fields -e frame. time| tail   -1
+
 
 
 
