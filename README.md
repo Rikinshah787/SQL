@@ -99,6 +99,10 @@ capinfos wlan.pcap
 $ tcpdump -nnr wlan.pcap | head -1
 $ tcpdump -nnr wlan.pcap | tail -1
 
+//
+
+tshark -r wlan.pcap -Y '((wlan.fc.type_subtype == 0x20) && (wlan.fc.protected == 1) && (wlan.bssid == 00:23:69:61:00:d0) && (wlan.sa == 1c:4b:d6:69:cd:07))' -T fields -e wlan.da | sort | uniq -c | sort -nr
+
 
 
 
