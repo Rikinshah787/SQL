@@ -80,7 +80,8 @@ tcpdump -nne -r wlan.pcap 'wlan[0] == 0x08 and wlan[1] & 0x40 == 0x40' | wc -l
 
 ///
 
-wlan.fc.type subtype == 0x01 && wlan mgt.ﬁxed.status code == 0x0000
+wlan.fc.type_subtype == 0x01 && wlan_mgt.fixed.status_code == 0x0000
+
 
 
 
