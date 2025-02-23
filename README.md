@@ -52,6 +52,10 @@ wlan.fc.type_subtype == 0x01 && wlan_mgt.fixed.status_code == 0x0000
 
 tcpdump -nne -r wlan.pcap 'wlan[0] == 0x10 and wlan[26:2] == 0x0000' | awk '{print $3}' | sort | uniq -c | sort -nr
 
+wlan.fc.type_subtype == 0x01 && wlan_mgt.fixed.status_code == 0x0000
+
+
+tcpdump -nne -r wlan.pcap 'wlan[0] == 0x10 and wlan[26:2] == 0x0000' | awk '{print $3}' | sort | uniq -c | sort -nr
 
 
 
