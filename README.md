@@ -120,6 +120,11 @@ tshark -r wlan.pcap -Y '(wlan.fc.type == 2) && (wlan.bssid == 00:23:69:61:00:d0)
 
 tshark -r wlan.pcap -Y '(wlan.fc.type == 2) && (wlan.bssid == 00:23:69:61:00:ce) && (wlan.sa == 00:23:69:61:00:ce)' -T fields -e wlan.da | sort | uniq -c | sort -nr
 
+//
+
+tshark -r wlan.pcap -Y '(wlan.fc.type == 2) && (wlan.bssid == 00:23:69:61:00:d0) && (wlan.sa == 00:23:69:61:00:ce)' -T fields -e wlan.da | sort | uniq -c | sort -nr
+
+
 
 
 
