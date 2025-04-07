@@ -33,9 +33,13 @@ Created several user defined fuction's
 1. Function named fnUnpaid InvoiceID that returns the InvoiceID of the earliest invoice with an unpaid balance.
 2. function named fnDateRange, similar to the stored procedure of exercise 3 which is created here the function should require two parameters of the date type. without validating   parameters. Returning a result set that includes the InvoiceNumber, InvoiceDate, InvoiceTotal, and Balance for each invoice for which the InvoiceDate is within the date range. Invoke the function from within a SELECT statement to return those invoices with InvoiceDate between October 10 and October 20, 2022.
 
-https://cloudgeniusguide.com/the-interoptic-case-study-part-2/
+--
+tcpdump -tnn -r evidence-network-tunneling.pcap
 
 
+tcpdump -tnn -r evidence-network-tunneling.pcap | grep -v NULL
+
+ngrep -I evidence-network-tunneling.pcap -W byline -t -x "udp and port 4500"
 
 
 
