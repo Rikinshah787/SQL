@@ -49,6 +49,7 @@ tshark -q -n -z conv,tcp -r evidence-malware.pcap
 
 $ tcpflow -vr evidence-malware.pcap ' src host 10.10.10.10 and src  port 4444 and  dst  host  10.10.10.70  and  dst  port  1036 '
 
+$ tcpdump -nn -r evidence-malware.pcap ' host 10.10.10.10 and port 4445 and host  10.10.10.70 '
 
 
 
