@@ -42,6 +42,12 @@ tcpdump -tnn -r evidence-network-tunneling.pcap | grep -v NULL
 ngrep -I evidence-network-tunneling.pcap -W byline -t -x "udp and port 4500"
 
 
+------------------
+sudo snort -c /etc/snort/snort.conf -r evidence-malware.pcap
+
+tshark -q -n -z conv,tcp -r evidence-malware.pcap
+
+$ tcpflow -vr evidence-malware.pcap ' src host 10.10.10.10 and src  port 4444 and  dst  host  10.10.10.70  and  dst  port  1036 '
 
 
 
