@@ -51,6 +51,7 @@ $ tcpflow -vr evidence-malware.pcap ' src host 10.10.10.10 and src  port 4444 an
 
 $ tcpdump -nn -r evidence-malware.pcap ' host 10.10.10.10 and port 4445 and host  10.10.10.70 '
 
+ tcpdump -nnv -r evidence-malware.pcap ' host  10.10.10.10  and  port  4445  and host   10.10.10.70  and   tcp [13]  & 0x02 ==  0x02 '
 
 
 
