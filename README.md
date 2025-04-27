@@ -34,34 +34,4 @@ Created several user defined fuction's
 2. function named fnDateRange, similar to the stored procedure of exercise 3 which is created here the function should require two parameters of the date type. without validating   parameters. Returning a result set that includes the InvoiceNumber, InvoiceDate, InvoiceTotal, and Balance for each invoice for which the InvoiceDate is within the date range. Invoke the function from within a SELECT statement to return those invoices with InvoiceDate between October 10 and October 20, 2022.
 
 --
-tcpdump -tnn -r evidence-network-tunneling.pcap
-
-
-tcpdump -tnn -r evidence-network-tunneling.pcap | grep -v NULL
-
-ngrep -I evidence-network-tunneling.pcap -W byline -t -x "udp and port 4500"
-
-
-------------------
-sudo snort -c /etc/snort/snort.conf -r evidence-malware.pcap
-
-tshark -q -n -z conv,tcp -r evidence-malware.pcap
-
-$ tcpflow -vr evidence-malware.pcap ' src host 10.10.10.10 and src  port 4444 and  dst  host  10.10.10.70  and  dst  port  1036 '
-
-$ tcpdump -nn -r evidence-malware.pcap ' host 10.10.10.10 and port 4445 and host  10.10.10.70 '
-
- tcpdump -nnv -r evidence-malware.pcap ' host  10.10.10.10  and  port  4445  and host   10.10.10.70  and   tcp [13]  & 0x02 ==  0x02 '
- ------------------------------------
-
- $ tcpdump -nnq -r evidence - malware . pcap ' host  10.10.10.10  and  port  4445  and host   10.10.10.70  and   tcp [13]  & 0x02 ==  0x02 '
-
-$ tcpdump -nn -r evidence - malware . pcap ' host 10.10.10.10 and port 4445 and host  10.10.10.70 and  tcp [13]  &  0x14 ==  0x14 ' | wc   -l
-
-$ tcpdump -nn -r evidence-malware.pcap ' host  10.10.10.10  and  port  4445  and host  10.10.10.70  and  tcp [13]  &   0x12  ==  0x12'
-  tcpdump -nn -r evidence-malware.pcap ' host 10.10.10.10 and port 4445 and host  10.10.10.70 '
-
-(ip.addr == 10.10.10.70) && (ip.addr == 10.10.10.10), 
-
-
-
+$ tcpdump -nnq -r evidence - malware . pcap ' host  10.10.10.10  and  port  4445  and host   10.10.10.70  and   tcp [13]  & 0x02 ==  0x02 '
