@@ -34,4 +34,4 @@ Created several user defined fuction's
 2. function named fnDateRange, similar to the stored procedure of exercise 3 which is created here the function should require two parameters of the date type. without validating   parameters. Returning a result set that includes the InvoiceNumber, InvoiceDate, InvoiceTotal, and Balance for each invoice for which the InvoiceDate is within the date range. Invoke the function from within a SELECT statement to return those invoices with InvoiceDate between October 10 and October 20, 2022.
 
 --
-$ tcpdump -nnq -r evidence-malware . pcap ' host  10.10.10.10  and  port  4445  and host   10.10.10.70  and   tcp [13]  & 0x02 ==  0x02 '
+grep "authentication failure" /home/student/Documents/Final_Exam_Files/auth.log | grep "baboon-srv" | grep "user=bob" | grep -c "pam_unix(sshd:auth):authentication failure"
